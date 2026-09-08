@@ -31,6 +31,7 @@ obj/
 *.userprefs
 appsettings.Development.json
 appsettings.Local.json
+!backend/appsettings.Development.json
 
 # ==========================================
 # Variables de Entorno & Secretos

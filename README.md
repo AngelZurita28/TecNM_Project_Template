@@ -53,3 +53,11 @@ El proyecto se rige por los siguientes estándares arquitectónicos:
 - **[Estándar de Autenticación y Sesiones](./AUTH.md):** Especificación de seguridad, cookies `HttpOnly`, ciclo de vida del JWT y soporte para login local y federado (Microsoft Entra / Google).
 - **[Arquitectura Backend (.NET 10)](./BACKEND_ARCHITECTURE.md):** Estructura y lineamientos para la API REST, persistencia con EF Core y PostgreSQL, y módulos de negocio con especificaciones locales.
 - **[Arquitectura Frontend (Vue 3 + TypeScript)](./FRONTEND_ARCHITECTURE.md):** Estructura y lineamientos para la aplicación SPA con Vite, rutas modulares descentralizadas, componentes reutilizables y especificaciones por slice.
+
+---
+
+## 📋 Planes de Implementación (`plans/`)
+
+Las hojas de ruta, fases de ejecución técnica y planes de trabajo generados para agentes o desarrolladores se centralizan en el directorio `plans/`:
+
+- **[01. Plan de Autenticación Local](./plans/01-auth-implementation.md):** Plan inicial de construcción del esqueleto Backend, Frontend y flujo de autenticación local con PostgreSQL y JWT en cookies.

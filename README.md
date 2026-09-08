@@ -15,6 +15,17 @@ El trabajo y colaboración con **Agentes de Inteligencia Artificial** en este ec
 3. **Validación Continua:** Los agentes implementan código y pruebas contrastando directamente contra las especificaciones del slice correspondiente.
 4. **Regla de Redacción:** Toda especificación y documentación generada por IA debe redactarse utilizando la skill **caveman** para garantizar máxima concisión técnica y eliminar contenido redundante.
 
+### Centralización y Contexto Maestro (`AGENTS.md`)
+
+Para inicializar y mantener la sincronización del contexto global, cada repositorio/proyecto (Backend y Frontend por separado) debe contar con un archivo **`AGENTS.md`** en su raíz:
+
+- **Punto de Entrada del Agente:** Es el primer documento que la IA debe consultar para comprender el sistema.
+- **Contenido Requerido:**
+  - Resumen y objetivos del proyecto.
+  - Reglas operativas, convenciones de código y estándares del campus.
+  - Índice / mapa centralizado que referencia a todos los módulos (`Modules/` o `src/modules/`), sus componentes clave y sus carpetas `specs/`.
+- **Mantenimiento:** Al inicializar un proyecto o crear un nuevo slice/módulo, debe registrarse y enlazarse inmediatamente en `AGENTS.md`.
+
 ### Skills Recomendadas para Agentes
 
 Se recomienda el uso de las siguientes skills para optimizar el flujo de desarrollo, diseño e implementación:

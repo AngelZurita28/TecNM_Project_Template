@@ -34,7 +34,7 @@ public sealed class AuthService(
             return null;
         }
 
-        var verification = passwordHasher.VerifyHashedPassword(user, user.PasswordHash, password);
+        var verification = passwordHasher.VerifyHashedPassword(user, user.Password, password);
         if (verification == PasswordVerificationResult.Failed)
         {
             return null;

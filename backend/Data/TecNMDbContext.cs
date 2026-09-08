@@ -20,7 +20,7 @@ public sealed class TecNMDbContext(DbContextOptions<TecNMDbContext> options) : D
         user.Property(item => item.Id).HasColumnName("id").HasDefaultValueSql("gen_random_uuid()");
         user.Property(item => item.Username).HasColumnName("username").HasMaxLength(64).IsRequired();
         user.Property(item => item.Email).HasColumnName("email").HasMaxLength(254).IsRequired();
-        user.Property(item => item.PasswordHash).HasColumnName("password_hash").HasMaxLength(512).IsRequired();
+        user.Property(item => item.Password).HasColumnName("password").HasMaxLength(512).IsRequired();
         user.Property(item => item.Name).HasColumnName("name").HasMaxLength(160).IsRequired();
         user.Property(item => item.Role).HasColumnName("role").HasMaxLength(16).IsRequired();
         user.Property(item => item.IsActive).HasColumnName("is_active").IsRequired();

@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS users (
     id uuid PRIMARY KEY DEFAULT gen_random_uuid(),
     username varchar(64) NOT NULL,
     email varchar(254) NOT NULL,
-    password_hash varchar(512) NOT NULL,
+    password varchar(512) NOT NULL,
     name varchar(160) NOT NULL,
     role varchar(16) NOT NULL,
     is_active boolean NOT NULL DEFAULT true,
@@ -16,13 +16,13 @@ CREATE TABLE IF NOT EXISTS users (
     CONSTRAINT ck_users_role CHECK (role IN ('Admin', 'User'))
 );
 
-INSERT INTO users (id, username, email, password_hash, name, role, is_active)
+INSERT INTO users (id, username, email, password, name, role, is_active)
 VALUES
     (
         '10000000-0000-4000-8000-000000000001',
         'admin',
         'admin@tecnm.local',
-        'AQAAAAIAAYagAAAAEFPoBoqMJiXNZgGHwLI83gVWhlPCYz0LngL0FdXtf746DVm4MfEatXfZtA10ZQHUVw==',
+        'AQAAAAIAAYagAAAAEPjbneKeORd2reFIG62af0ufOMPtwf64j0jpBznNBo3Y8K/BUoUW+IhJOm0b5iqWOg==',
         'Administrador Demo',
         'Admin',
         true
@@ -31,14 +31,14 @@ VALUES
         '10000000-0000-4000-8000-000000000002',
         'usuario',
         'usuario@tecnm.local',
-        'AQAAAAIAAYagAAAAED8ZXms6S16ii//d3zmZH70AxF3rLs+PzAZS1ABU2tKCOT6NNuAmxnf5lqjCBCSFjQ==',
+        'AQAAAAIAAYagAAAAECBhXWISKf+YayCz0xB8E4vyjO6chAfRLTq+f2eA4ztdtdDqA99jr+VsfZXUoKbfdQ==',
         'Usuario Demo',
         'User',
         true
     )
 ON CONFLICT (username) DO UPDATE SET
     email = EXCLUDED.email,
-    password_hash = EXCLUDED.password_hash,
+    password = EXCLUDED.password,
     name = EXCLUDED.name,
     role = EXCLUDED.role,
     is_active = EXCLUDED.is_active;

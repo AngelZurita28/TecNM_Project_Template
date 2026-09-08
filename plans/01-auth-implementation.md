@@ -93,7 +93,7 @@ Ningún archivo C#, Vue o TypeScript se escribirá antes de completar esta fase.
 Crear `database.sql` idempotente con:
 
 - Tabla `users`.
-- Columnas `id UUID`, `username`, `email`, `password_hash`, `name`, `role`, `is_active` y `created_at`.
+- Columnas `id UUID`, `username`, `email`, `password`, `name`, `role`, `is_active` y `created_at`.
 - Llaves únicas para `username` y `email`.
 - Restricciones `NOT NULL` y validación básica de `role`.
 - Dos usuarios demo activos: `admin` con rol `Admin` y `usuario` con rol `User`.

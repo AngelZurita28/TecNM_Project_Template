@@ -12,7 +12,7 @@ Este archivo añade responsabilidades frontend. Contratos HTTP, DTOs, cookies y 
 - `routes.ts`: declarar `/login` pública y `/` protegida con lazy loading.
 - Guard: analizar `session_exp`; redirigir si falta, no es timestamp válido o venció.
 - `LoginView`: formulario accesible, validación básica, carga y error genérico.
-- `SessionView`: obtener `/me`, mostrar usuario y permitir logout.
+- `SessionView`: obtener `/me`, mostrar usuario y permitir logout con componentes y tokens institucionales.
 - `index.ts`: exponer solo rutas y contratos requeridos fuera del slice.
 
 ## Estado y seguridad
@@ -32,10 +32,18 @@ Este archivo añade responsabilidades frontend. Contratos HTTP, DTOs, cookies y 
 
 ## Contrato de interfaz
 
-- Usar una retícula institucional sobria, tipografía del sistema y superficies planas; sin logos simulados, gradientes decorativos ni tarjetas SaaS genéricas.
-- Tokens base: fondo `#F8FAFC`, primario `#1E3A5F`, secundario `#2563EB`, acento `#A16207`, superficie `#FFFFFF`, texto `#0F172A`, borde `#CBD5E1` y error `#DC2626`.
+- Usar diseño exacto de `frontend/DESIGN.md` y `frontend/dummy/index.html`, incluidos temas claro y oscuro.
+- `LoginView` muestra únicamente acceso institucional mediante `LoginForm`.
+- `SessionView` muestra bienvenida, datos reales de `/me`, logout y catálogo de componentes tras iniciar sesión.
+- Identidad visible: TecNM, Tecnológico Nacional de México, Campus Monclova.
 - Mantener labels visibles, `autocomplete="username"` y `autocomplete="current-password"`; permitir pegado y administradores de contraseñas.
 - Comunicar validación, carga y errores mediante texto claro y una región `aria-live`.
 - Todos los controles interactivos miden al menos 44 px y muestran foco visible de 2 px.
 - La composición funciona desde 375 px y respeta `prefers-reduced-motion`.
 - Vite sirve desarrollo por HTTPS en `https://localhost:5173` para aceptar cookies `Secure`.
+
+## Integración con layout
+
+- Exportar rutas públicas y autenticadas por separado; router raíz agrega MainLayout como padre protegido.
+- SessionView contiene bienvenida y catálogo, sin header/sidebar propios.
+- LogoutButton expuesto por Auth para acción persistente del layout; conserva cierre local incluso si falla API.

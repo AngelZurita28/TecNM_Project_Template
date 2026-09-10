@@ -42,3 +42,7 @@ Verificación visual prevista: login, error genérico, carga, sesión, logout, r
 - [`src/modules/auth/`](./src/modules/auth/): API, tipos, rutas y vistas del slice.
 - [`src/modules/auth/specs/`](./src/modules/auth/specs/): contexto frontend de Auth.
 - [Contrato raíz](../specs/auth.spec.md): única fuente de verdad compartida.
+
+- [`src/shared/components/`](./src/shared/components/): biblioteca visual reutilizable; [spec](./src/shared/components/specs/components.spec.md).
+
+- [`src/app/layouts/`](./src/app/layouts/README.md): MainLayout persistente; configuración independiente de header, sidebar, marca y navegación.

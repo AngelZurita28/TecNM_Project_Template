@@ -6,8 +6,11 @@ export const authRoutes: RouteRecordRaw[] = [
     name: 'login',
     component: () => import('./views/LoginView.vue'),
   },
+]
+
+export const authenticatedAuthRoutes: RouteRecordRaw[] = [
   {
-    path: '/',
+    path: '',
     name: 'session',
     component: () => import('./views/SessionView.vue'),
     meta: { requiresAuth: true },

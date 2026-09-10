@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 
-import { authRoutes } from '../../modules/auth'
+import { authRoutes, authenticatedAuthRoutes } from '../../modules/auth'
 import {
   clearSessionMarker,
   hasActiveSession,
@@ -8,7 +8,18 @@ import {
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: authRoutes,
+  routes: [
+    ...authRoutes,
+    {
+      path: '/',
+      component: () => import('../layouts/MainLayout.vue'),
+      meta: { requiresAuth: true },
+      children: authenticatedAuthRoutes,
+    },
+  ],
+  scrollBehavior(to, _from, savedPosition) {
+    return savedPosition ?? (to.hash ? { el: to.hash, top: 24 } : { top: 0 })
+  },
 })
 
 router.beforeEach((to) => {

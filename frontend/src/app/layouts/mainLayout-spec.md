@@ -85,5 +85,11 @@ Reemplazar destinos por páginas reales al agregar módulos; no crear vistas fic
 
 En escritorio, sidebar ocupa borde izquierdo de ventana y permanece visible mediante `position: sticky`.
 Menú tiene altura de viewport y scroll propio si desborda. Header permanece en flujo normal.
-Contenido conserva ancho y centrado anteriores; límite de 1600 px ya no desplaza sidebar.
+UiShell reserva todo ancho disponible. Cada vista elige ancho mediante UiBasePage; sidebar no depende de ese límite.
 En móvil, navegación mantiene flujo superior y altura natural.
+
+## Ancho por página
+
+Usar `UiBasePage` dentro de cada vista autenticada. MainLayout no impone límite central.
+`fluid` ocupa todo ancho disponible; sin `fluid`, máximo 960 px centrados.
+SessionView usa `fluid`. Márgenes responsive siguen en UiShell.

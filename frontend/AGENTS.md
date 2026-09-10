@@ -1,5 +1,16 @@
 # Contexto frontend
 
+## Skills obligatorias
+
+Antes de proceder con cualquier indicación del usuario, intentar cargar estas skills:
+
+1. `caveman`: respuestas y documentación concisas.
+2. `ponytail`: implementación mínima, mantenible y sin sobreingeniería.
+3. `frontend-design`: diseño visual intencional y coherente con identidad TecNM.
+4. `ui-ux-pro-max`: consistencia UI/UX, accesibilidad y responsive.
+
+Usar las cuatro durante trabajo frontend. Si alguna no existe o no puede cargarse, informar al usuario y preguntar si desea proceder sin ella. No iniciar cambios hasta recibir respuesta.
+
 ## Objetivo
 
 Construir SPA Vue 3 con TypeScript. Primer slice: login local, guard preventivo, sesión visible y logout.
@@ -14,6 +25,11 @@ Construir SPA Vue 3 con TypeScript. Primer slice: login local, guard preventivo,
 ## Reglas
 
 - Aplicar SDD. Actualizar spec antes de código.
+- Priorizar siempre componentes existentes en `src/shared/components/`. Buscar, reutilizar y componer antes de crear componente o CSS local.
+- Extender componente compartido cuando necesidad sea genérica para varias vistas. Mantener lógica exclusiva dentro del módulo correspondiente.
+- Usar `UiBasePage` como raíz de contenido en todas las vistas de página, públicas o autenticadas.
+- Usar `UiBasePage` con `fluid=true` por defecto para ocupar ancho disponible de lado a lado.
+- Usar modo centrado solo cuando usuario o spec lo indique, o cuando contenido requiera lectura estrecha tipo artículo o formulario compacto.
 - Usar Vue 3, Composition API, `<script setup lang="ts">`, TypeScript y Vite.
 - Organizar por vertical slice. Exponer API pública mediante `index.ts`.
 - Mantener rutas del módulo en `routes.ts` y cargar vistas de forma diferida.
@@ -39,10 +55,11 @@ Verificación visual prevista: login, error genérico, carga, sesión, logout, r
 - [`src/app/`](./src/app/): arranque SPA y router agregador.
 - [`src/shared/api/`](./src/shared/api/): Axios base e interceptor `401`.
 - [`src/shared/styles/`](./src/shared/styles/): tokens y estilos globales.
+- [`src/shared/composables/`](./src/shared/composables/): estado reactivo transversal; [spec de tema](./src/shared/composables/useTheme-spec.md).
 - [`src/modules/auth/`](./src/modules/auth/): API, tipos, rutas y vistas del slice.
 - [`src/modules/auth/specs/`](./src/modules/auth/specs/): contexto frontend de Auth.
 - [Contrato raíz](../specs/auth.spec.md): única fuente de verdad compartida.
 
 - [`src/shared/components/`](./src/shared/components/): biblioteca visual reutilizable; [spec](./src/shared/components/specs/components.spec.md).
 
-- [`src/app/layouts/`](./src/app/layouts/README.md): MainLayout persistente; configuración independiente de header, sidebar, marca y navegación.
+- [`src/app/layouts/`](./src/app/layouts/MAINLAYOUT.md): MainLayout persistente; configuración independiente de header, sidebar, marca y navegación.

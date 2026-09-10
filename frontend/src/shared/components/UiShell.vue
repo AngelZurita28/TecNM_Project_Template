@@ -26,18 +26,9 @@ withDefaults(defineProps<{ showHeader?: boolean; showSidebar?: boolean }>(), {
   flex: 1;
   grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
 }
-/* El límite sigue en el contenido; sidebar ocupa el borde de la ventana. */
-.ui-main {
-  width: 100%;
-  max-width: calc(1600px - var(--sidebar-width));
-  margin-inline: auto;
-}
-.layout--content-only > .ui-main { max-width: 1600px; }
+.ui-main { width: 100%; }
 @media (max-width: 1100px) {
   .layout { --sidebar-width: 180px; }
-}
-@media (max-width: 640px) {
-  .ui-main { max-width: none; }
 }
 .layout--content-only { grid-template-columns: minmax(0, 1fr); }
 </style>

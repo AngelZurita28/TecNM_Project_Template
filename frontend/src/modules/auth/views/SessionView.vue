@@ -2,8 +2,8 @@
 import { isAxiosError } from 'axios'
 import { computed, onMounted, ref } from 'vue'
 import {
-  UiAlert, UiBadge, UiButton, UiCallout, UiCard, UiChip, UiColorPalette,
-  UiDialog, UiDisclosure, UiDivider, UiField, UiLayout, UiMetric, UiPageHeader,
+  UiAlert, UiBadge, UiBasePage, UiButton, UiCallout, UiCard, UiChip, UiColorPalette,
+  UiDialog, UiDisclosure, UiDivider, UiField, UiLayout, UiMetric,
   UiRadio, UiRange, UiTable, UiText, UiToast, UiToggle, UiTypeSample,
 } from '../../../shared/components'
 import { useTheme } from '../../../shared/composables/useTheme'
@@ -82,8 +82,8 @@ function selectFilter(value: string) {
 </script>
 
 <template>
-    <UiPageHeader :title="user ? `Bienvenido, ${user.name}` : 'Bienvenido a TecNM'"
-      description="Tu cuenta institucional y los componentes de nuestra plataforma." />
+    <UiBasePage fluid :title="user ? `Bienvenido, ${user.name}` : 'Bienvenido a TecNM'"
+      description="Tu cuenta institucional y los componentes de nuestra plataforma.">
     <UiLayout id="cuenta" class="account-section" :aria-busy="isLoading">
       <UiAlert v-if="isLoading" tone="info" title="Consultando sesión…" />
       <UiCard v-else-if="user" title="Datos de la cuenta">
@@ -177,6 +177,7 @@ function selectFilter(value: string) {
         </UiLayout>
       </UiCard>
     </UiLayout>
+    </UiBasePage>
   <UiDialog v-model="previewOpen" title="Revisión del informe">
     <UiText>Ejemplo de diálogo con la tercera capa de elevación, borde definido y fondo translúcido.</UiText>
     <template #actions><UiButton autofocus @click="previewOpen = false">Cerrar diálogo</UiButton></template>

@@ -47,3 +47,5 @@ Este archivo añade responsabilidades frontend. Contratos HTTP, DTOs, cookies y 
 - Exportar rutas públicas y autenticadas por separado; router raíz agrega MainLayout como padre protegido.
 - SessionView contiene bienvenida y catálogo, sin header/sidebar propios.
 - LogoutButton expuesto por Auth para acción persistente del layout; conserva cierre local incluso si falla API.
+
+- SessionView compone bienvenida y catálogo dentro de UiBasePage en modo fluid, aprovechando ancho disponible junto a sidebar.

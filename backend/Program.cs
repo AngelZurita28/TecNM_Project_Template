@@ -9,6 +9,8 @@ using TecNM.Api.Modules.Auth;
 
 const string FrontendCors = "Frontend";
 
+LoadDotEnv();
+
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
 
@@ -105,3 +107,66 @@ app.MapGet("/api/health", () => Results.Ok(new { status = "ok" })).AllowAnonymou
 app.MapControllers();
 
 app.Run();
+
+static void LoadDotEnv()
+{
+    var searchDir = new DirectoryInfo(Directory.GetCurrentDirectory());
+    DirectoryInfo? backendDir = null;
+
+    if (File.Exists(Path.Combine(searchDir.FullName, "TecNM.Api.csproj")))
+    {
+        backendDir = searchDir;
+    }
+    else if (Directory.Exists(Path.Combine(searchDir.FullName, "backend")))
+    {
+        backendDir = new DirectoryInfo(Path.Combine(searchDir.FullName, "backend"));
+    }
+    else
+    {
+        var baseDir = new DirectoryInfo(AppContext.BaseDirectory);
+        while (baseDir != null)
+        {
+            if (File.Exists(Path.Combine(baseDir.FullName, "TecNM.Api.csproj")))
+            {
+                backendDir = baseDir;
+                break;
+            }
+
+            baseDir = baseDir.Parent;
+        }
+    }
+
+    if (backendDir == null)
+    {
+        return;
+    }
+
+    var envPath = Path.Combine(backendDir.FullName, ".env");
+    if (!File.Exists(envPath))
+    {
+        return;
+    }
+
+    foreach (var rawLine in File.ReadAllLines(envPath))
+    {
+        var line = rawLine.Trim();
+        if (string.IsNullOrWhiteSpace(line) || line.StartsWith('#'))
+        {
+            continue;
+        }
+
+        var separatorIndex = line.IndexOf('=');
+        if (separatorIndex <= 0)
+        {
+            continue;
+        }
+
+        var key = line[..separatorIndex].Trim();
+        var value = line[(separatorIndex + 1)..].Trim().Trim('"', '\'');
+
+        if (string.IsNullOrEmpty(Environment.GetEnvironmentVariable(key)))
+        {
+            Environment.SetEnvironmentVariable(key, value);
+        }
+    }
+}

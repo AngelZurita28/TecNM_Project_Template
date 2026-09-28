@@ -43,9 +43,9 @@ Construir SPA Vue 3 con TypeScript. Primer slice: login local, guard preventivo,
 ## Comandos previstos
 
 ```bash
-npm --prefix frontend install
-npm --prefix frontend run dev -- --host
-npm --prefix frontend run build
+pnpm --prefix frontend install
+pnpm --prefix frontend run dev -- --host
+pnpm --prefix frontend run build
 ```
 
 Verificación visual prevista: login, error genérico, carga, sesión, logout, redirección por expiración y responsive.
